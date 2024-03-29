@@ -1,0 +1,4 @@
+---
+- name: user message
+  debug:
+    msg: "You have to re-login to the current shell to be able to access docker commands from non-root user!!"

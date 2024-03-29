@@ -1,0 +1,13 @@
+---
+- name: install roles
+  hosts: all
+  become: true
+  roles:
+    - role: tomcat
+      tags: 'tomcat'
+    - role: maven
+      tags: 'maven'
+    - role: docker
+      tags: 'docker'
+    - role: jenkins
+      tags: 'jenkins'

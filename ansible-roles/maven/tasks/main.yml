@@ -1,0 +1,37 @@
+---
+- name: install python software properties
+  apt: 
+    name: python3-software-properties
+    update_cache: yes
+    state: present
+
+#- name: add repo
+#  apt_repository: 
+#    repo: ppa:webupd8team/java
+#    state: present
+    #    update_cache: yes
+
+- name: install default jdk
+  apt: 
+    name: default-jdk
+    update_cache: yes
+    state: present
+
+- name: download maven tar file
+  uri: 
+    url: https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+    dest: /opt
+    creates: /opt/apache-maven-3.9.6-bin.tar.gz
+
+- name: unarchive tar file
+  unarchive: 
+    src: /opt/apache-maven-3.9.6-bin.tar.gz
+    dest: /opt
+    remote_src: yes
+    
+- name: update maven alternatives
+  community.general.alternatives:
+    name: maven
+    path: /opt/apache-maven-3.9.6/bin/mvn
+    link: /usr/bin/mvn
+    priority: 1001
