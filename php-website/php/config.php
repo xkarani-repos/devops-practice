@@ -8,7 +8,7 @@
 function config($key = '')
 {
     $config = [
-        'name' => 'Raghunadh PHP Website',
+        'name' => 'Edureka PHP Website',
         'nav_menu' => [
             '' => 'Home',
             'content/about-us.php' => 'About Us',
